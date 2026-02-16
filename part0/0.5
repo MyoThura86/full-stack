@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: GET /exampleapp/spa
+    activate server
+    server-->>browser: HTML document
+    deactivate server
+
+    browser->>server: GET /exampleapp/main.css
+    server-->>browser: CSS file
+
+    browser->>server: GET /exampleapp/spa.js
+    server-->>browser: JavaScript file
+
+    Note right of browser: Browser runs JS and fetches notes data
+
+    browser->>server: GET /exampleapp/data.json
+    activate server
+    server-->>browser: JSON notes list
+    deactivate server
+
+    Note right of browser: JS renders notes without reload
